@@ -28,7 +28,7 @@
 
   <x:feedback template="mailto:ietf-http-wg@w3.org?subject={docname},%20%22{section}%22&amp;body=&lt;{ref}&gt;:"/>
 
-	<front>
+        <front>
   <title>'Out-Of-Band' Content Coding for HTTP</title>
   <author initials="J. F." surname="Reschke" fullname="Julian F. Reschke">
     <organization abbrev="greenbytes">greenbytes GmbH</organization>
@@ -38,8 +38,8 @@
         <city>Muenster</city><region>NW</region><code>48155</code>
         <country>Germany</country>
       </postal>
-      <email>julian.reschke@greenbytes.de</email>	
-      <uri>http://greenbytes.de/tech/webdav/</uri>	
+      <email>julian.reschke@greenbytes.de</email>
+      <uri>http://greenbytes.de/tech/webdav/</uri>
     </address>
   </author>
   <author initials="S." surname="Loreto" fullname="Salvatore Loreto">
@@ -47,8 +47,8 @@
     <address>
         <postal>
         <street>Hirsalantie 11</street>
-        <code>02420</code> 
-          <city>Jorvas</city> 
+        <code>02420</code>
+          <city>Jorvas</city>
           <country>Finland</country>
         </postal>
         <email>salvatore.loreto@ericsson.com</email>
@@ -56,7 +56,7 @@
   </author>
 
   <date year="2016"/>
-  
+
   <area>Applications and Real-Time</area>
   <keyword>HTTP</keyword>
   <keyword>content coding</keyword>
@@ -69,20 +69,20 @@
       that contains the payload.
     </t>
   </abstract>
-  
+
 
   <note title="Editorial Note (To be removed by RFC Editor before publication)">
     <t>
       Distribution of this document is unlimited. Although this is not a work
-      item of the HTTPbis Working Group, comments should be sent to the 
+      item of the HTTPbis Working Group, comments should be sent to the
       Hypertext Transfer Protocol (HTTP) mailing list at <eref target="mailto:ietf-http-wg@w3.org">ietf-http-wg@w3.org</eref>,
-      which may be joined by sending a message with subject 
+      which may be joined by sending a message with subject
       "subscribe" to <eref target="mailto:ietf-http-wg-request@w3.org?subject=subscribe">ietf-http-wg-request@w3.org</eref>.
     </t>
     <t>
       Discussions of the HTTPbis Working Group are archived at
-      <eref target="http://lists.w3.org/Archives/Public/ietf-http-wg/"/>.               
-    </t> 
+      <eref target="http://lists.w3.org/Archives/Public/ietf-http-wg/"/>.
+    </t>
     <t>
       XML versions, latest edits, and issue tracking for this document
       are available from <eref target="https://github.com/reschke/oobencoding"/> and
@@ -111,7 +111,7 @@
   able to cache content, leveraging content encryption, as described in
   <xref target="ENCRYPTENC"/>.
 </t>
-</section>  
+</section>
 
 <section title="Notational Conventions" anchor="notational.conventions">
 <t>
@@ -135,7 +135,7 @@
 </t>
 <t>
   <list style="numbers">
-    <t anchor="flow.get.request">Client performs GET request</t>
+    <t anchor="flow.get.request">Client performs a request</t>
     <t anchor="flow.get.response">Received response specifies the 'out-of-band' content coding; the payload
     of the response contains additional meta data, plus the location of the secondary
     resource</t>
@@ -171,7 +171,7 @@
 </section>
 <section title="Definitions">
 <t>
-  The name of the content coding is "out-of-band". 
+  The name of the content coding is "out-of-band".
 </t>
 <t>
   The payload format uses JavaScript Object Notation (JSON, <xref target="RFC7159"/>),
@@ -185,8 +185,8 @@
     </t>
     <t hangText="'metadata'">
       An &OPTIONAL; object containing additional members, representing header field values
-      to be recombined with the metadata from the secondary resource 
-      and which can not appear as header fields in the response message itself 
+      to be recombined with the metadata from the secondary resource
+      and which can not appear as header fields in the response message itself
       (header fields that occur multiple times need to be combined into a single field value as
       per <xref target="RFC7230" x:rel="#field.order"/>; header field names are lower-cased).
     </t>
@@ -210,7 +210,7 @@
     <x:lt>
       <t>
         Unwrapping the encapsulated HTTP message by removing any transfer and content codings.
-      </t>  
+      </t>
       <t>
         The latter might require
         additional metadata that could be present in the "metadata" object,
@@ -250,7 +250,7 @@
   of the reconstructed message, such as its web origin (<xref target="RFC6454"/>).
 </t>
 <t>
-  The cacheability of the response for the secondary resource does not affect 
+  The cacheability of the response for the secondary resource does not affect
   the cacheability of the reconstructed response message, which is the same as
   for the origin server's response.
 </t>
@@ -383,8 +383,8 @@ Content-Language: en
 <t>
   Given the example HTTP message from <xref target="ENCRYPTENC" x:sec="5.4"/>,
   a primary resource could use the "out-of-band" encoding to specify just
-  the location of the secondary resource plus the contents of the 
-  "Crypto-Key" header field needed to decrypt the payload: 
+  the location of the secondary resource plus the contents of the
+  "Crypto-Key" header field needed to decrypt the payload:
 </t>
 <figure>
 <preamble>Response:</preamble>
@@ -484,7 +484,7 @@ Link: &lt;http://example.net/bae27c36-fa6a-11e4-ae5d-00059a3c7a00>;
   obtained from the secondary resource really is what the origin server
   expects it to be. Content signatures can address this concern
   (see <xref target="CONTENTSIG"/>).
-</t>  
+</t>
 </section>
 <section title="Use in Requests">
 <t>
@@ -513,7 +513,7 @@ Link: &lt;http://example.net/bae27c36-fa6a-11e4-ae5d-00059a3c7a00>;
 
   </middle>
   <back>
-  
+
 <references title="Normative References">
 
 <reference anchor="RFC2119">
@@ -643,7 +643,7 @@ Link: &lt;http://example.net/bae27c36-fa6a-11e4-ae5d-00059a3c7a00>;
 <section title="Alternatives, or: why not a new Status Code?" anchor="alternatives">
 <t>
   A plausible alternative approach would be to implement this functionality one level
-  up, using a new redirect status code (<xref target="RFC7231" x:rel="#status.3xx"/>). However, 
+  up, using a new redirect status code (<xref target="RFC7231" x:rel="#status.3xx"/>). However,
   this would have several drawbacks:
 </t>
 <t>
@@ -659,9 +659,9 @@ Link: &lt;http://example.net/bae27c36-fa6a-11e4-ae5d-00059a3c7a00>;
 <t>
   Another alternative would be to implement the indirection on the level
   of the media type using something similar to the type "message/external-body",
-  defined in <xref target="RFC2017"/> and refined for use in the 
+  defined in <xref target="RFC2017"/> and refined for use in the
   Session Initiation Protocol (SIP) in <xref target="RFC4483"/>. This approach
-  though would share most of the drawbacks of the status code approach mentioned 
+  though would share most of the drawbacks of the status code approach mentioned
   above.
 </t>
 </section>
@@ -687,7 +687,7 @@ Link: &lt;http://example.net/bae27c36-fa6a-11e4-ae5d-00059a3c7a00>;
   the origin server to push content to it).
 </t>
 <t>
-  In this particular case, it can be useful if the client was able to 
+  In this particular case, it can be useful if the client was able to
   "piggyback" the URI of the primary resource, giving the secondary server
   a means by which it could obtain the payload itself. This information could
   be provided in yet another Link header field:
